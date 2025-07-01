@@ -1,0 +1,20 @@
+﻿  Course 11 OOP Aplication.cpp
+E:\Programming\Mohamed Abo-Hadhoud\Appliactions and Exercices\Course 11 OOP Aplication\clsString.h(66,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Course%2011%20OOP%20Aplication.cpp')
+  
+E:\Programming\Mohamed Abo-Hadhoud\Appliactions and Exercices\Course 11 OOP Aplication\clsString.h(365,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Course%2011%20OOP%20Aplication.cpp')
+  
+E:\Programming\Mohamed Abo-Hadhoud\Appliactions and Exercices\Course 11 OOP Aplication\clsString.h(393,23): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Course%2011%20OOP%20Aplication.cpp')
+  
+E:\Programming\Mohamed Abo-Hadhoud\Appliactions and Exercices\Course 11 OOP Aplication\clsString.h(417,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'Course%2011%20OOP%20Aplication.cpp')
+  
+E:\Programming\Mohamed Abo-Hadhoud\Appliactions and Exercices\Course 11 OOP Aplication\clsString.h(504,24): warning C4267: '=': conversion from 'size_t' to 'short', possible loss of data
+  (compiling source file 'Course%2011%20OOP%20Aplication.cpp')
+  
+E:\Programming\Mohamed Abo-Hadhoud\Appliactions and Exercices\Course 11 OOP Aplication\clsUtil.h(65,5): warning C4102: 'defualt': unreferenced label
+  (compiling source file 'Course%2011%20OOP%20Aplication.cpp')
+  
+  Course 11 OOP Aplication.vcxproj -> E:\Programming\Mohamed Abo-Hadhoud\Appliactions and Exercices\Course 11 OOP Aplication\x64\Debug\Course 11 OOP Aplication.exe
