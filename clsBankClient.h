@@ -1,6 +1,7 @@
 #pragma once
 # include <iostream>
 # include "clsString.h"
+# include "clsUtil.h"
 # include "clsPerson.h"
 # include "clsInputValidate.h"
 # include <fstream>
@@ -496,5 +497,52 @@ public:
 		}
 	}
 
+	static float GetTotalBalances()
+	{
+		vector<clsBankClient> vClients = GetClientsList();
+		float TotalBalances = 0;
+		for (clsBankClient &Client : vClients)
+		{
+			TotalBalances += Client.AccountBalance;
+		}
+		return TotalBalances;
+	}
+
+	static void PrintClientRecordBalanceLine(clsBankClient Client)
+	{
+		cout << "| " << left << setw(15) << Client.AccountNumber();
+		cout << "| " << left << setw(40) << Client.FullName();
+		cout << "| " << left << setw(15) << Client.AccountBalance;
+	}
+
+	static void ShowTotalBalances()
+	{
+		vector<clsBankClient> vClients = GetClientsList();
+		cout << "\n\t\t\t\tBalances List ( " << vClients.size() << " ) Client (s)";
+		cout << "\n______________________________________________________________";
+		cout << "_________________________________________________________\n" << endl;
+		
+		cout << "| " << left << setw(15) << "Account Number";
+		cout << "| " << left << setw(40) << "Client Name";
+		cout << "| " << left << setw(15) << "Balance";
+
+		cout << "\n______________________________________________________________";
+		cout << "_________________________________________________________\n" << endl;
+
+		for (clsBankClient& Client : vClients)
+		{
+			PrintClientRecordBalanceLine(Client);
+			cout << endl;
+		}
+
+		cout << "\n______________________________________________________________";
+		cout << "_________________________________________________________\n" << endl;
+
+		float TotalBalances = GetTotalBalances();
+
+		cout << "\n\t\t\tTotal Balances = " << TotalBalances << endl;
+
+		cout << "\t\t( " << clsUtil::NumberToText((int)TotalBalances) << " ) " << endl;
+	}
 };
 
