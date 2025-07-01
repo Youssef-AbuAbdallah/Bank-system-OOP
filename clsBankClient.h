@@ -4,6 +4,7 @@
 # include "clsPerson.h"
 # include "clsInputValidate.h"
 # include <fstream>
+# include <iomanip>
 class clsBankClient : public clsPerson
 {
 private :
@@ -140,6 +141,16 @@ private :
 		*this = _GetEmptyClientObject();
 
 		return true;
+	}
+
+	static void _PrintClientRecordLine(clsBankClient Client)
+	{
+		cout << "| " << left << setw(15) << Client.AccountNumber();
+		cout << "| " << left << setw(25) << Client.FullName();
+		cout << "| " << left << setw(12) << Client.Phone;
+		cout << "| " << left << setw(32) << Client.Email;
+		cout << "| " << left << setw(10) << Client.PinCode;
+		cout << "| " << left << setw(10) << Client.AccountBalance;
 	}
 
 public:
@@ -443,7 +454,47 @@ public:
 
 	}
 
-	
+	static vector<clsBankClient> GetClientsList()
+	{
+		return _LoadClientsDataFromFile();
+	}
+
+
+	static void ShowClientsList()
+	{
+		vector<clsBankClient> vClients = GetClientsList();
+
+		// Print Header
+		cout << "\n\t\t\t\tClient List ( " << vClients.size() << " ) Client (s)";
+		cout << "\n______________________________________________________________";
+		cout << "_________________________________________________________\n" << endl;
+
+		cout << "| " << left << setw(15) << "AccountNumber";
+		cout << "| " << left << setw(25) << "Client Name";
+		cout << "| " << left << setw(12) << "Phone";
+		cout << "| " << left << setw(32) << "Email";
+		cout << "| " << left << setw(10) << "Pin Code";
+		cout << "| " << left << setw(10) << "Balance";
+		
+		cout << "\n______________________________________________________________";
+		cout << "_________________________________________________________\n" << endl;
+
+		if (vClients.size() == 0)
+		{
+			cout << "\n\t\t\tNo Clients Availabe In The System ! " << endl;
+		}
+		else
+		{
+			for (clsBankClient Client : vClients)
+			{
+				_PrintClientRecordLine(Client);
+				cout << endl;
+			}
+
+			cout << "\n______________________________________________________________";
+			cout << "_________________________________________________________\n" << endl;
+		}
+	}
 
 };
 

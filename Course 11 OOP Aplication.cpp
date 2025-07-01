@@ -12,7 +12,7 @@
 
 int main()
 {
-    clsBankClient::DeleteClient();
+    clsBankClient::ShowClientsList();
 
     return 0;
 }
