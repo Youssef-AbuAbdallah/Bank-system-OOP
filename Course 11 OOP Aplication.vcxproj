@@ -130,8 +130,11 @@
     <ClInclude Include="..\..\Projects\Course 10\Course 10 second project\clsPeriod.h" />
     <ClInclude Include="..\..\Projects\Course 10\Course 10 second project\clsString.h" />
     <ClInclude Include="clsBankClient.h" />
+    <ClInclude Include="clsClientListScreen.h" />
     <ClInclude Include="clsInputValidate.h" />
+    <ClInclude Include="clsMainScreen.h" />
     <ClInclude Include="clsPerson.h" />
+    <ClInclude Include="clsScreen.h" />
     <ClInclude Include="clsUtil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

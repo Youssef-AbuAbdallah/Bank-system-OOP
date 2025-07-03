@@ -8,11 +8,13 @@
 # include <cstdlib>
 # include "clsDate.h"
 # include <fstream>
+# include "clsMainScreen.h"
 
 
 int main()
 {
-    clsBankClient::ShowTotalBalances();
+
+    clsMainScreen::ShowMainMenue();
 
     return 0;
 }

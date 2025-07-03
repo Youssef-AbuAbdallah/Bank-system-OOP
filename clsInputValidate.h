@@ -167,6 +167,53 @@ public:
 		return stoi(Number);
 	}
 
+	static short ReadShortNumber(string ErrorMessage = "Invalid integer number , Please enter another number : ")
+	{
+		string Number;
+		short NegativeSign = 0;
+		bool Valid = true , InRange = true;
+		do
+		{
+			if (!Valid || !InRange)
+			{
+				cout << ErrorMessage;
+			}
+			cin >> Number;
+			Valid = true;
+			
+			// handle non digit characters as invalid
+			for (int i=0 ; i<Number.size();i++)
+			{
+				if (!isdigit(Number[i]))
+				{
+					if (Number[i] == '-' && i==0)
+					{
+						NegativeSign++;
+						continue;
+					}
+					Valid = false;
+					break;
+				}
+			}
+			InRange = clsInputValidate::IsStringNumberOutOfRange(Number, to_string(-32768), to_string(32767));
+		} while (!Valid || !InRange);
+		
+		return stoi(Number);
+	}
+
+	static short ReadShortNumberBetween(short From, short To, string ErrorMessage = "Number is out of range!, Please enter another number :")
+	{
+		short Number;
+
+		Number = clsInputValidate::ReadShortNumber();
+		while (!IsNumberBetween(Number, From, To))
+		{
+			cout << ErrorMessage;
+			Number = clsInputValidate::ReadShortNumber();
+		}
+		return Number;
+	}
+
 	static int ReadIntNumberBetween(int From, int To, string ErrorMessage = "Number is out of range!, Please enter another number :")
 	{
 		int Number;
