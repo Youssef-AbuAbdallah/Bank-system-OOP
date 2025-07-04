@@ -124,25 +124,6 @@ private :
 		_AddDataLineToFile(_ConvertClientObjectToLine(*this));
 	}
 
-	bool _Delete()
-	{
-		vector <clsBankClient> vClients;
-		vClients = _LoadClientsDataFromFile();
-		for (clsBankClient& C : vClients)
-		{
-			if (C.AccountNumber() == _AccountNumber)
-			{
-				C._MarkForDelete = true;
-				break;
-			}
-		}
-
-		_SaveClientsDataToFile(vClients);
-
-		*this = _GetEmptyClientObject();
-
-		return true;
-	}
 
 	static void _PrintClientRecordLine(clsBankClient Client)
 	{
@@ -204,21 +185,21 @@ public:
 	}
 	__declspec(property(get = GetAccountBalance, put = SetAccountBalance)) float AccountBalance;
 
-	void Print()
-	{
-		cout << "\nClient Card:";
-		cout << "\n___________________";
-		cout << "\nFirstName   : " << FirstName;
-		cout << "\nLastName    : " << LastName;
-		cout << "\nFull Name   : " << FullName();
-		cout << "\nEmail       : " << Email;
-		cout << "\nPhone       : " << Phone;
-		cout << "\nAcc. Number : " << AccountNumber();
-		cout << "\nPassword    : " << _PinCode;
-		cout << "\nBalance     : " << _AccountBalance;
-		cout << "\n___________________\n";
+	//void Print()
+	//{
+	//	cout << "\nClient Card:";
+	//	cout << "\n___________________";
+	//	cout << "\nFirstName   : " << FirstName;
+	//	cout << "\nLastName    : " << LastName;
+	//	cout << "\nFull Name   : " << FullName();
+	//	cout << "\nEmail       : " << Email;
+	//	cout << "\nPhone       : " << Phone;
+	//	cout << "\nAcc. Number : " << AccountNumber();
+	//	cout << "\nPassword    : " << _PinCode;
+	//	cout << "\nBalance     : " << _AccountBalance;
+	//	cout << "\n___________________\n";
 
-	}
+	//}
 
 	static void ReadClientInfo(clsBankClient& Client)
 	{
@@ -419,6 +400,26 @@ public:
 
 	}
 
+	bool Delete()
+	{
+		vector <clsBankClient> vClients;
+		vClients = _LoadClientsDataFromFile();
+		for (clsBankClient& C : vClients)
+		{
+			if (C.AccountNumber() == _AccountNumber)
+			{
+				C._MarkForDelete = true;
+				break;
+			}
+		}
+
+		_SaveClientsDataToFile(vClients);
+
+		*this = _GetEmptyClientObject();
+
+		return true;
+	}
+
 	static void DeleteClient()
 	{
 		string AccountNumber = "";
@@ -441,7 +442,7 @@ public:
 
 		if (Answer == 'y' || Answer == 'Y')
 		{
-			if (Client._Delete())
+			if (Client.Delete())
 			{
 				cout << "\nClient Deleted successfully " << endl;
 				Client.Print();
