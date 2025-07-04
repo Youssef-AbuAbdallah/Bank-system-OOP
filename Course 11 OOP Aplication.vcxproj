@@ -129,8 +129,10 @@
     <ClInclude Include="..\..\Projects\Course 10\Course 10 second project\clsDate.h" />
     <ClInclude Include="..\..\Projects\Course 10\Course 10 second project\clsPeriod.h" />
     <ClInclude Include="..\..\Projects\Course 10\Course 10 second project\clsString.h" />
+    <ClInclude Include="clsAddNewClientScreen.h" />
     <ClInclude Include="clsBankClient.h" />
     <ClInclude Include="clsClientListScreen.h" />
+    <ClInclude Include="clsDeleteClientScreen.h" />
     <ClInclude Include="clsInputValidate.h" />
     <ClInclude Include="clsMainScreen.h" />
     <ClInclude Include="clsPerson.h" />
