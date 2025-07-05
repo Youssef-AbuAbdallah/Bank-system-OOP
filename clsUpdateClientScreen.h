@@ -5,7 +5,7 @@
 # include "clsInputValidate.h"
 using namespace std;
 
-class clsUpdateClientScreen : clsScreen
+class clsUpdateClientScreen : protected clsScreen
 {
 private :
 
