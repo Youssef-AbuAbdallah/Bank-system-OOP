@@ -9,7 +9,11 @@
 # include "clsDate.h"
 # include <fstream>
 # include "clsMainScreen.h"
+# include "clsScreen.h"
 
+string clsScreen::GreenFont = "\033[32m";
+string clsScreen::WhiteFont = "\033[0m";
+string clsScreen::RedFont = "\033[31m";
 
 int main()
 {

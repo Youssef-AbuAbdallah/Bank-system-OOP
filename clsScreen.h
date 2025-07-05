@@ -6,6 +6,10 @@ class clsScreen
 {
 protected:
 
+   static string GreenFont ;
+   static string WhiteFont ;
+   static string RedFont   ;
+
 	static void _DrawScreenHeader(string Title, string SubTitle="")
 	{
         cout << "\t\t\t\t\t______________________________________";
