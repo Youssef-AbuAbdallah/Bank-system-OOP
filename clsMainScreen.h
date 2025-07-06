@@ -8,7 +8,7 @@
 # include "clsDeleteClientScreen.h"
 # include "clsUpdateClientScreen.h"
 # include "clsFindClientScreen.h"
-
+# include "clsTransacrionsScreen.h"
 
 using namespace std;
 
@@ -70,8 +70,8 @@ private:
 
     static void _ShowTransactionsMenue()
     {
-        cout << "\nTransactions Menue Will be here...\n";
-
+       // cout << "\nTransactions Menue Will be here...\n";
+        clsTransacrionsScreen::ShowTransactionsMenue();
     }
 
     static void _ShowManageUsersMenue()
@@ -85,6 +85,7 @@ private:
         cout << "\nEnd Screen Will be here...\n";
 
     }
+
 
     static void _PerfromMainMenueOption(enMainMenueOptions MainMenueOption)
     {
@@ -124,11 +125,14 @@ private:
         case enMainMenueOptions::eShowTransactionsMenue:
             system("cls");
             _ShowTransactionsMenue();
+            ShowMainMenue();
+            //_GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eManageUsers:
             system("cls");
             _ShowManageUsersMenue();
+            _GoBackToMainMenue();
             break;
 
         case enMainMenueOptions::eExit:
