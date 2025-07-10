@@ -4,6 +4,7 @@
 # include "clsInputValidate.h"
 # include "clsDepositScreen.h"
 # include "clsWithdrawScreen.h"
+# include "clsTotalBalancesScreen.h"
 
 using namespace std;
 
@@ -43,7 +44,8 @@ private :
 
     static void _ShowTotalBalancesScreen()
     {
-        cout << "\n TotalBalances will be here";
+       // cout << "\n TotalBalances will be here";
+        clsTotalBalancesScreen::ShowTotalBalances();
     }
 
 
