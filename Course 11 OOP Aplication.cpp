@@ -1,16 +1,7 @@
 #include <iostream>
-# include "clsBankClient.h"
-#include "clsInputValidate.h"
-# include "clsString.h"
-# include "clsUtil.h"
-# include <vector>
-# include <string>
-# include <cstdlib>
-# include "clsDate.h"
-# include <fstream>
-# include "clsMainScreen.h"
-# include "clsScreen.h"
-
+# include "clsLoginScreen.h"
+# include "clsScreen.h" // for global fonts colors here
+# include "Global.h"
 using namespace std;
 
 string clsScreen::GreenFont = "\033[32m";
@@ -20,7 +11,14 @@ string clsScreen::RedFont = "\033[31m";
 int main()
 {
 
-    clsMainScreen::ShowMainMenue();
+    while (true) // this loop to solve the problem of Circular Reference
+    {
+        if (!clsLoginScreen::ShowLoginScreen())
+        {
+            break;
+       }
+    }
+
 
     return 0;
 }

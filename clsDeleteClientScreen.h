@@ -32,7 +32,13 @@ public:
 
 	static void ShowDeleteClientScreen()
 	{
-		clsScreen::_DrawScreenHeader("Delete Screen");
+
+		if (!CheckAccessRights(clsUser::enPermissions::pDeleteClient))
+		{
+			return; // this will rxit the function and will not continue 
+		}
+
+		clsScreen::_DrawScreenHeader("\tDelete Screen");
 
 		cout << "\nPlease enter account number : ";
 		string AccountNumber;

@@ -49,6 +49,12 @@ private :
 public:
 	static void ShowAddNewClientScreen()
 	{
+
+		if (!CheckAccessRights(clsUser::enPermissions::pAddNewClient))
+		{
+			return; // this will rxit the function and will not continue 
+		}
+
 		_DrawScreenHeader("\t  Add New Client Screen");
 
 		cout << "\n Please enter account Number : ";

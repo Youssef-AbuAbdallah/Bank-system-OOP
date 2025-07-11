@@ -118,8 +118,14 @@ private:
 public:
 
 	static void ShowManageUsersMenue()
-	{
+    {
 		system("cls");
+
+        if (!CheckAccessRights(clsUser::enPermissions::pManageUsers))
+        {
+            return; // this will rxit the function and will not continue 
+        }
+
 		_DrawScreenHeader("\tManage Users Screen");
 
         cout << setw(37) << left << "" << clsScreen::GreenFont << "===========================================\n";
