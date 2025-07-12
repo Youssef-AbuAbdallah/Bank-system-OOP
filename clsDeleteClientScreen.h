@@ -35,7 +35,7 @@ public:
 
 		if (!CheckAccessRights(clsUser::enPermissions::pDeleteClient))
 		{
-			return; // this will rxit the function and will not continue 
+			return; // this will exit the function and will not continue 
 		}
 
 		clsScreen::_DrawScreenHeader("\tDelete Screen");

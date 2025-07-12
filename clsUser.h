@@ -5,6 +5,7 @@
 # include "clsString.h"
 # include <vector>
 # include <fstream>
+# include "clsDate.h"
 
 using namespace std;
 
@@ -156,15 +157,46 @@ private :
 
 
 
+    
+     string _PrepareLogInRecord(string Seperator = "#//#")
+     {
+         string LoginRecord = "";
+         LoginRecord += clsDate::GetSystemDateTimeString() + Seperator;
+         LoginRecord += UserName + Seperator;
+         LoginRecord += Password + Seperator;
+         LoginRecord += to_string(Permission);
+         return LoginRecord;
+     }
 
+     struct stLoginRegisterRecord;
+     static stLoginRegisterRecord _ConvertLoginRegisterLineToRecord(string Line,string Seperator = "#//#")
+     {
+         stLoginRegisterRecord LoginRegisterRecord;
+         
+         vector<string> vLoginRegisterLine = clsString::SplitString(Line, Seperator);
 
+         LoginRegisterRecord.DateTime = vLoginRegisterLine[0];
+         LoginRegisterRecord.UserName = vLoginRegisterLine[1];
+         LoginRegisterRecord.Password = vLoginRegisterLine[2];
+         LoginRegisterRecord.Permissions = stoi(vLoginRegisterLine[3]);
+
+         return LoginRegisterRecord;
+     }
 
 public :
 
     enum enPermissions {
         eAll = -1, pListClients = 1, pAddNewClient = 2, pDeleteClient = 4,
-        pUpdateClient = 8, pFindClient = 16, pTransactions = 32, pManageUsers = 64
+        pUpdateClient = 8, pFindClient = 16, pTransactions = 32, pManageUsers = 64 , pShowLoginRegisterScreen = 128
     };
+    
+    struct stLoginRegisterRecord {
+        string DateTime;
+        string UserName;
+        string Password;
+        int Permissions;
+    };
+
 
 	clsUser(enMode Mode, string FirstName, string LastName, string Email, string Phone,
 		string UserName, string Password, int Permission) : clsPerson(FirstName, LastName, Email, Phone)
@@ -373,6 +405,44 @@ public :
         }
 
     }
+
+    void RegisterLogin()
+    {
+        string stDataLine = _PrepareLogInRecord();
+        fstream MyFile;
+        MyFile.open("LoginRegister.txt", ios::out | ios::app);
+
+        if (MyFile.is_open())
+        {
+            MyFile << stDataLine << endl;
+            MyFile.close();
+        }
+
+    }
+
+
+    static vector<stLoginRegisterRecord> GetLoginRegisterList()
+    {
+        vector<stLoginRegisterRecord> vLoginRegisterRecord;
+
+        fstream MyFile;
+        MyFile.open("LoginRegister.txt", ios::in);
+
+        if (MyFile.is_open())
+        {
+            stLoginRegisterRecord  LoginRegisterRecord;
+            string Line;
+            while (getline(MyFile, Line))
+            {
+                LoginRegisterRecord = _ConvertLoginRegisterLineToRecord(Line);
+                vLoginRegisterRecord.push_back(LoginRegisterRecord);
+            }
+            MyFile.close();
+        }
+        return vLoginRegisterRecord;
+    }
+
+
 
 };
 

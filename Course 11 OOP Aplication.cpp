@@ -16,7 +16,7 @@ int main()
         if (!clsLoginScreen::ShowLoginScreen())
         {
             break;
-       }
+        }
     }
 
 
